@@ -1,31 +1,31 @@
 class DockingStation
-  # DEFAULT_CAPACITY = 20
+  DEFAULT_CAPACITY = 20
   attr_reader :capacity
-  def initialize(capacity = 20)
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
     @capacity = capacity
   end
 
-  def dock bike
+  def release_bike
+    fail 'No Bikes' if empty?
+    bikes.pop
+  end
+
+  def dock(bike)
     fail 'Station Full' if full?
     bikes << bike
     nil
-  end
-
-  def release_bike
-    fail 'No Bikes Available' if empty?
-    bikes.pop
   end
 
   private
 
   attr_reader :bikes
 
-  def full?
-    bikes.length >= capacity
+  def empty?
+    bikes.reject(&:broken?).length == 0
   end
 
-  def empty?
-    bikes.empty?
+  def full?
+    bikes.length >= DEFAULT_CAPACITY
   end
 end
