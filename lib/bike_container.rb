@@ -1,7 +1,7 @@
 module BikeContainer
   DEFAULT_CAPACITY = 20
 
-  attr_writer :capacity, :value=
+  attr_writer :capacity
   def bikes
     @bikes ||= []
   end
@@ -13,6 +13,7 @@ module BikeContainer
   def dock bike
     fail 'Station Full' if full?
     bikes << bike
+    nil
   end
 
   def release_bike

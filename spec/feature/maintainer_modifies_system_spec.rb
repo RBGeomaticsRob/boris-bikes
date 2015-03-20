@@ -3,9 +3,9 @@ require 'docking_station'
 
 feature 'maintainance modifies the system' do
   scenario 'by increasing capacity' do
-    bigger = DockingStation::DEFAULT_CAPACITY + 10
+    bigger = { capacity: DockingStation::DEFAULT_CAPACITY + 10 }
     docking_station = DockingStation.new(bigger)
-    expect(docking_station.capacity).to eq bigger
+    expect(docking_station.capacity).to eq bigger[:capacity]
   end
   scenario 'vans can release broken bikes from docking station to be fixed' do
     docking_station = DockingStation.new

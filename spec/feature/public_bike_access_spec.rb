@@ -9,12 +9,12 @@ feature 'member of public can release a bike' do
     expect(bike).not_to be_broken
   end
   scenario 'if the docking station is empty a bike is not released' do
-    expect { docking_station.release_bike }.to raise_error 'No Available Bikes'
+    expect { docking_station.release_bike }.to raise_error 'No Bikes Available'
   end
   scenario 'the docking station will not release a broken bike' do
     broken_bike = Bike.new
     broken_bike.break
     docking_station.dock broken_bike
-    expect { docking_station.release_bike }.to raise_error 'No Available Bikes'
+    expect { docking_station.release_bike }.to raise_error 'No Bikes Available'
   end
 end
