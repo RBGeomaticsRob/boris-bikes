@@ -2,7 +2,6 @@ require 'capybara/rspec'
 require 'docking_station'
 
 feature 'maintainance modifies the system' do
-  let(:van) { Van.new }
   scenario 'by increasing capacity' do
     bigger = DockingStation::DEFAULT_CAPACITY + 10
     docking_station = DockingStation.new(bigger)
