@@ -20,7 +20,10 @@ feature 'maintainance modifies the system' do
     docking_station.dock(bike)
     expect { docking_station.release_broken }.to raise_error 'No Broken Bikes'
   end
+  scenario 'vans can return fixed bikes to docking station' do
+    van = Van.new
+    van.load(Bike.new)
+    expect(van.release_bike).not_to be_broken
+  end
   scenario 'garages can fix broken bikes'
-  scenario 'garages can signal that bikes are ready for collection'
-  scenario 'vans can return fixed bikes to docking station'
 end
